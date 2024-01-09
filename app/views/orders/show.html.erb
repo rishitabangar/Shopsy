@@ -1,0 +1,51 @@
+<br>
+<% current_user.addresses.each do |address| %>
+  <% if address.primary %>
+    Your Primary Address: 
+    <br>
+      <% if address.office %>
+         Office:
+      <% else %>
+         Home: 
+      <% end %>  
+
+      <%= address.address_line1 %>
+      <%= address.address_line2%><br>
+      <%= address.city%>
+      <%= address.state%>
+      <%= address.country%><br>
+      <%= address.pincode%>
+    <br>
+ <% end %>
+<% end %><hr>
+
+<div  class="card" style="width: 100%;">
+  <% @orderitems.each do |order| %>
+    <div class="row">
+      <div class="col">
+        <div><%= image_tag order.product.image , style: "width: 40%"%></div><br>
+      </div> 
+        <div class="col">
+          <div class="card-body"> 
+            <h5 class="card-title"><%= order.product.name%></h5>
+            <%= order.product.description%><br>
+            Total Quantity: 
+            <b><%= link_to "+", increment_items_path(product_id: order.product.id) ,:method => :get %></b><%= order.quantity%>
+            <b><%= link_to "-", decrement_items_path(product_id: order.product.id) ,:method => :get%></b><br>
+            Total Price: <%= order.total_price%> 
+
+            <p>  
+              <%= button_to "Remove item", order_item_path(order.product), :method => :delete, data: {
+                            turbo_method: :delete,
+                            turbo_confirm: "Are you sure?"
+                          } , class: "btn btn-danger" %>
+            </p>
+          </div>
+        </div>
+    </div>
+  <% end %>
+</div>
+<br>
+<h4>Balance: <%= @orderitems.sum(:total_price) %></h4>
+ 
+<%= button_to "Place Order" , class: "btn btn-warning" %>

@@ -1,0 +1,60 @@
+<div class="card" , style="padding: 2%">
+<%= form_with model: product do |form| %>
+  
+  <div>
+  
+    <%= form.label :name %><br>
+    <%= form.text_field :name , class: "form-control"%>
+
+    <% product.errors.full_messages_for(:name).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+
+  </div>
+  
+  <div>
+
+    <%= form.label :description %><br>
+    <%= form.text_area :description ,class: "form-control"%>
+
+    <% product.errors.full_messages_for(:description).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+
+  </div>
+
+  <div>
+
+    <%= form.label :price %><br>
+    <%= form.number_field :price ,class: "form-control"%> 
+
+    <% product.errors.full_messages_for(:price).each do |message| %>
+      <div><%= message %></div>
+    <% end %>    
+  
+  </div>
+
+  <div>
+
+    <%= form.label :quantity %><br>
+    <%= form.number_field :quantity ,class: "form-control"%> 
+
+    <% product.errors.full_messages_for(:quantity).each do |message| %>
+      <div><%= message %></div>
+    <% end %>    
+  
+  </div>
+
+  <div>
+    <%= form.label :image %><br>
+    <%= form.file_field :image ,class: "form-control"%>
+  </div> 
+
+  <br>
+
+  <div>
+    <%= form.submit%>
+  </div>
+  
+<% end %>
+</div>

@@ -1,0 +1,24 @@
+<div class="container text-center">
+  <div class="row row-cols-2">
+    <div><%= image_tag @product.image , style: "width: 65%; height: 90%" %></div>
+    
+      <div>
+        <h3 class="col"><%= @product.name %></h3>
+          <div class="col"><%= @product.description %><br>
+            <b>Price: <%= @product.price %></b><hr>
+            <%= button_to "add to cart", cart_items_path(product: @product), class: "btn btn-warning", style:"padding-left: 40%; padding-right: 40%; border-radius: 30px"%><br>
+            <%= button_to "Buy Now", order_items_path(product: @product) , class: "btn btn-warning", style:"padding-left: 41%; padding-right: 41%; border-radius: 30px;"%>
+          </div>
+      </div>
+      
+  </div>  
+</div> 
+
+
+<br><%= link_to "Edit", edit_product_path(@product) %>
+
+<p><%= link_to "Destroy Product", product_path(@product), data: {
+              turbo_method: :delete,
+              turbo_confirm: "Are you sure?"
+            } %></p>
+

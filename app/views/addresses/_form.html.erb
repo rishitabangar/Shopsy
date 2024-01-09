@@ -1,0 +1,49 @@
+
+<%= form_with(model:address) do |form| %>
+  
+  <div>
+    <%= form.label :address_line1 %><br>
+    <%= form.text_field :address_line1 %>
+  </div>
+
+  <div>
+    <%= form.label :address_line2 %><br>
+    <%= form.text_field :address_line2 %>
+  </div> 
+
+  <div>
+    <%= form.label :city %><br>
+    <%= form.text_field :city %>
+  </div>
+
+  <div>
+  <%= form.label :state %><br>
+  <%= form.text_field :state %>
+  </div>
+
+  <div>
+  <%= form.label :country %><br>
+  <%= form.text_field :country %>
+  </div>
+    
+  <div>
+  <%= form.label :pincode %><br>
+  <%= form.text_field :pincode %>
+  </div>
+
+  <div>
+  <%= form.label :primary %>
+  <%= form.check_box :primary %> 
+  <div>
+
+  <%= form.radio_button :address_type, "home" %>
+  <%= form.label :home %>
+  <%= form.radio_button :address_type, "office" %>
+  <%= form.label :office %>
+
+<br>
+  <div>
+    <%= form.submit %>
+  </div>
+    
+<% end %>
