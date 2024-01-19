@@ -197,7 +197,7 @@ GEM
     net-smtp (0.4.0)
       net-protocol
     nio4r (2.7.0)
-    nokogiri (1.15.5-x86_64-linux)
+    nokogiri (1.16.0-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
     pry (0.14.2)
@@ -318,6 +318,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  actiontext (~> 7.0)
   activeadmin
   bcrypt
   bootsnap
@@ -332,6 +333,7 @@ DEPENDENCIES
   pry-nav
   puma (>= 5.0)
   rails (~> 7.1.2)
+  ruby-vips
   sassc-rails
   selenium-webdriver
   sprockets-rails

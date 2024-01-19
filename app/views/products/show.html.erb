@@ -5,7 +5,7 @@
       <div>
         <h3 class="col"><%= @product.name %></h3>
           <div class="col"><%= @product.description %><br>
-            <b>Price: <%= @product.price %></b><hr>
+            <b class="bi bi-currency-rupee">Price: <%= @product.price %></b><hr>
             <%= button_to "add to cart", cart_items_path(product: @product), class: "btn btn-warning", style:"padding-left: 40%; padding-right: 40%; border-radius: 30px"%><br>
             <%= button_to "Buy Now", order_items_path(product: @product) , class: "btn btn-warning", style:"padding-left: 41%; padding-right: 41%; border-radius: 30px;"%>
           </div>
@@ -17,7 +17,7 @@
 
 <br><%= link_to "Edit", edit_product_path(@product) %>
 
-<p><%= link_to "Destroy Product", product_path(@product), data: {
+<p><%= button_to "Destroy Product", product_path(@product),:method => :delete, data: {
               turbo_method: :delete,
               turbo_confirm: "Are you sure?"
             } %></p>

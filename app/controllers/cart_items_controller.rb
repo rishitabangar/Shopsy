@@ -12,13 +12,13 @@ before_action :mergecart, :only => [:create], if: -> { user_signed_in? && @curre
       if cartitem
         cartitem.update(quantity: cartitem.quantity+=1, total_price: @product.price*cartitem.quantity)
         @product.update(quantity: @product.quantity-=1)
-        redirect_to @product , notice: "Added to the cart"
+        redirect_to users_carts_path , notice: "Added to the cart"
 
       else
         @cartitem = @product.cart_items.new(cart_id: @cart.id, total_price: @product.price*1)
         @product.update(quantity: @product.quantity-=1)
           if @cartitem.save
-            redirect_to @product, notice: "Added to the cart"
+            redirect_to users_carts_path, notice: "Added to the cart"
           else
             redirect_to @product, alert: "something wrong"
           end
@@ -75,20 +75,18 @@ before_action :mergecart, :only => [:create], if: -> { user_signed_in? && @curre
   end
    
   def mergecart 
- 
-
     @product = Product.find(params[:product])  
     if @product.quantity > 0 
       @useritem.map do |item|
         if item.product_id == @product.id
           item.update(quantity: item.quantity+=1, total_price: @product.price*item.quantity)
           @product.update(quantity: @product.quantity-=1)
-          redirect_to @product , notice: "Added to the cart"  
+          redirect_to users_carts_path , notice: "Added to the cart"  
           return
         else
           @cartitem = @product.cart_items.create(cart_id: current_user.cart.id, total_price:@product.price*1)
           @product.update(quantity: @product.quantity-=1)
-          redirect_to @product, notice: "Added to the cart" 
+          redirect_to users_carts_path, notice: "Added to the cart" 
           return
         end
       end 

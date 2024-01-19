@@ -17,31 +17,38 @@
   </div>
 
   <div>
-  <%= form.label :state %><br>
-  <%= form.text_field :state %>
+    <%= form.label :state %><br>
+    <%= form.text_field :state %>
   </div>
 
   <div>
-  <%= form.label :country %><br>
-  <%= form.text_field :country %>
+    <%= form.label :country %><br>
+    <%= form.text_field :country %>
   </div>
     
   <div>
-  <%= form.label :pincode %><br>
-  <%= form.text_field :pincode %>
+    <%= form.label :pincode %><br>
+    <%= form.text_field :pincode %>
   </div>
 
   <div>
-  <%= form.label :primary %>
-  <%= form.check_box :primary %> 
+    <%= form.label :primary %>
+    <%= form.check_box :primary %> 
   <div>
 
-  <%= form.radio_button :address_type, "home" %>
-  <%= form.label :home %>
-  <%= form.radio_button :address_type, "office" %>
-  <%= form.label :office %>
+  <div>
+    <%= form.radio_button :address_type, "home" %>
+    <%= form.label :home %>
+    <%= form.radio_button :address_type, "office" %>
+    <%= form.label :office %>
+  </div>  
+  
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.rich_text_area :content%>
+  </div>
 
-<br>
+  <br>
   <div>
     <%= form.submit %>
   </div>

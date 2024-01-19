@@ -42,9 +42,9 @@ before_action :mycart
 
   def destroy
     @product = Product.find(params[:id])
-
+     
     @product.destroy
-    redirect_to @product, status: :see_other
+    redirect_to products_path, status: :see_other
   end
 
   def mycart
@@ -57,7 +57,7 @@ before_action :mycart
 
   private 
   def product_params 
-    params.require(:product).permit(:name, :description, :price, :quantity, :image)
+    params.require(:product).permit(:name, :description, :category, :price, :quantity, :image)
   end
   
 end

@@ -1,6 +1,6 @@
 <h3>My Cart</h3>
 
-<% if @cart_items%>
+<% if @cart_items.exists?%>
   <div>
     <% @cart_items.each do |cartitem| %>
       <div class="card" style="width: 50rem;">
@@ -10,7 +10,7 @@
               <div class= "col">
                 <h5><%= cartitem.product.name%></h5><hr>
                 <%= cartitem.product.description%><br>
-                <div style="font-size: 20px;">Price: <%= cartitem.total_price%></div> 
+                Price: <div class="bi bi-currency-rupee", style="font-size: 20px;"><%=cartitem.total_price%></div> 
                   Added Quantity:
                   <b><%= link_to "+", increment_path(product_id: cartitem.product_id) %></b>
                      <%= cartitem.quantity%> 
@@ -25,10 +25,8 @@
                             turbo_confirm: "Are you sure?"
                           } ,class:"btn btn-danger", style: "border-radius: 20px"%>
             </p>
-  
-       </div>
-      </div> 
-      <br> 
+        </div>
+      </div><br> 
     <% end %>
   </div>
 
@@ -37,11 +35,12 @@
 
 <div class="row">
   <div class="col", style="padding-top: 1%;"> Amount: <%= @cart_items.sum(:total_price) %></div> 
-  <div class="col"><%= button_to "Buy Now", all_items_path(@cart_items), :method => :get, class:"btn btn-success"%></div>
-  <div>Total Products: <%= @cart_items.sum(:quantity)%></div>
+    <div class="col"><%= button_to "Buy Now", all_items_path(@cart_items), :method => :get,  class:"btn btn-success"%></div>  
+      <div>Total Products: <%= @cart_items.sum(:quantity)%></div>
 </div>
 
 <% else %>
-  <b>Your Cart is Empty</b>
+  <h1 class="bi bi-emoji-frown-fill"></h1>
+  <b style="justify-content: center;">Your Cart is Empty</b>
 <% end %>
 

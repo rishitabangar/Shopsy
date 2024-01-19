@@ -78,4 +78,17 @@ Rails.application.configure do
   
   # config/environments/development.rb
   config.sass.inline_source_maps = true
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+  address:         'smtp.gmail.com',
+  port:            587,
+  domain:          'gmail.com',
+  user_name:       'ribangar@bestpeers.in',
+  password:        'vhye hste igqu uilt',
+  authentication:  'plain',
+  enable_starttls: true,
+  open_timeout:    5,
+  read_timeout:    5 }
+
 end

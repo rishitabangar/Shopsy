@@ -1,5 +1,5 @@
 class CartsController < ApplicationController
-  before_action :authenticate_user!, :only => [:all_items]  
+before_action :authenticate_user!, except: [:show]
 
   def all_items
     if (current_user && @current_cart) || current_user

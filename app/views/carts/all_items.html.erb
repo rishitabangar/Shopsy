@@ -20,27 +20,24 @@ Your Address:
       <%= address.pincode%>
     <br>
  <% end %>
-<% end %>
+<% end %><hr>
 
 <% @cart_items.each do |cartitem| %>
-  <h4>
-    <%= cartitem.product.name%> 
-  </h4>
-
-  <div><%= image_tag cartitem.product.image , style: "width: 10%; height: 20%;"%></diV>
-
-  <br>
-  <%= cartitem.product.description%> 
-
-  <br><div>Price: 
-  <%= cartitem.total_price%> 
-  </div> 
-  
+  <div class="card mb-3" style="width: 50rem;">
+    <div style= "padding: 3%; padding-top: 3%; padding-bottom: 0%">
+      <div class="row">
+        <div class= "col"><%= image_tag cartitem.product.image , style: "width: 50%; height: 60%;"%></div>
+          <div class= "col">
+            <h4><%= cartitem.product.name%></h4>
+            <%= cartitem.product.description%> 
+            <br>Price: <div class="bi bi-currency-rupee"><%= cartitem.total_price%></div>
+          </div>
+      </div>
+    </div>
+  </div>
 <% end %>
 
-<h4> Balance: 
-  <%= @cart_items.sum(:total_price) %>
-</h4> 
-
-<h3><%= button_to "Continue"%></h3>
-
+<div>
+  <h4> Balance: <%= @cart_items.sum(:total_price) %></h4> 
+  <h3><%= button_to "Continue", style:"background-color: yellow"%></h3>
+</div>
